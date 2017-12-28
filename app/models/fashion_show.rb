@@ -1,0 +1,2 @@
+class FashionShow < ApplicationRecord
+end
