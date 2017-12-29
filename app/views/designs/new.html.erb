@@ -1,5 +1,8 @@
 <h2>Please enter a new design</h2>
-<h4>to be presented at "<%= @fashion_show.title %>" in <%= @fashion_show.location %></h4>
+
+<% if @fashion_show %>
+  <h4>to be presented at "<%= @fashion_show.title %>" in <%= @fashion_show.location %></h4>
+<% end %>
 
 <%= render partial: 'layouts/error_messages', locals: { instance: @design } %>
 

@@ -7,14 +7,13 @@ class FashionShow < ApplicationRecord
   validates :title, uniqueness: true
   validates :location, presence: true
   validates :venue, presence: true
-  validates :design_ids, presence: true
-  validates :designer_ids, presence: true
+  # validates :design_ids, presence: true
 
   def design=(design_attributes)
     design = Design.new(design_attributes)
     if design.save
       self.designs << design
-    end 
+    end
   end
 
 

@@ -7,7 +7,9 @@
 
 <h4>Participating Designers:</h4>
 <ul>
-  <% fashion_show.designers.each do |designer| %>
+  <% fashion_show.designers.uniq.each do |designer| %>
     <li><%= designer.name %></li>
   <% end %>
 </ul>
+
+<%= button_to "Cancel this show", fashion_show_path(fashion_show), method: :delete, data: { confirm: "Are you sure?" } %>

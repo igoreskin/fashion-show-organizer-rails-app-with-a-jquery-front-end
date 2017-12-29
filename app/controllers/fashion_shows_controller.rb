@@ -25,6 +25,12 @@ class FashionShowsController < ApplicationController
     end
   end
 
+  def destroy
+    @fashion_show = FashionShow.find(params[:id])
+    @fashion_show.destroy
+    redirect_to fashion_shows_path
+  end
+
 
   private
 

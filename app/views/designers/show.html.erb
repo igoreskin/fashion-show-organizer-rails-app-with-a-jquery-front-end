@@ -1,0 +1,5 @@
+<%= render partial: 'designer', locals: { designer: @designer} %>
+
+<% if @designer == current_user %>
+  <%= button_to "Create a New Design", new_designer_design_path %>
+<% end %>

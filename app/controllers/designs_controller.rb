@@ -16,8 +16,13 @@ class DesignsController < ApplicationController
   end
 
   def new
-    set_fashion_show
-    @design = @fashion_show.designs.build
+    if params[:fashion_show_id]
+      set_fashion_show
+      @design = @fashion_show.designs.build
+    elsif params[:designer_id]
+      @designer = User.find(id: params[:designer_id])
+      @design = @designer.designs.build
+    end
   end
 
   def create

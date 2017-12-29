@@ -12,8 +12,12 @@
         <li><%= link_to("Sign up", new_user_registration_path) %></li>
         <li><%= link_to("Sign out", destroy_user_session_path, :method => 'delete') %></li>
 
+        <li> <%= link_to "View All Designers", designers_path %> </li>
+
         <li> <%= link_to "View All Available Designs", designs_path %> </li>
 
         <li><%= link_to "View All Available Fashion Shows", fashion_shows_path %></li>
+
+        <li><%= link_to "Create a New Fashion Show", new_fashion_show_path %></li>
     </ul>
 </nav>
