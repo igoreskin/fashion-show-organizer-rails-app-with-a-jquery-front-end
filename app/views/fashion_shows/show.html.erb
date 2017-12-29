@@ -1,1 +1,7 @@
 <%= render partial: 'fashion_show', locals: { fashion_show: @fashion_show} %>
+
+<%= link_to "Create a New Design", new_fashion_show_design_path(@fashion_show) %>
+
+<br><br>
+
+<%= button_to "Cancel this show", fashion_show_path(@fashion_show), method: :delete, data: { confirm: "Are you sure?" } %>

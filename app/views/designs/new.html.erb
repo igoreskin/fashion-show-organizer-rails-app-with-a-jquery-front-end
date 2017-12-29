@@ -4,15 +4,30 @@
   <h4>to be presented at "<%= @fashion_show.title %>" in <%= @fashion_show.location %></h4>
 <% end %>
 
-<%= render partial: 'layouts/error_messages', locals: { instance: @design } %>
 
-<%= form_for @design, url: fashion_show_designs_path(@fashion_show) do |f| %>
-  <%= f.hidden_field :designer_id, value: current_user.id %>
-  <%= f.label :name %>:
-  <%= f.text_field :name %><br><br>
-  <%= f.label :style %>:
-  <%= f.text_field :style %><br><br>
-  <%= f.label :fashion %>:
-  <%= f.text_field :fashion %><br><br>
-  <%= f.submit %>
+<% if @fashion_show %>
+  <%= form_for @design, url: fashion_show_designs_path(@fashion_show) do |f| %>
+    <%= f.hidden_field :designer_id, value: current_user.id %>
+    <%= f.label :name %>:
+    <%= f.text_field :name %><br><br>
+    <%= f.label :style %>:
+    <%= f.text_field :style %><br><br>
+    <%= f.label :fashion %>:
+    <%= f.text_field :fashion %><br><br>
+    <%= f.submit %>
+  <% end %>
+<% end  %>
+
+<% if @designer %>
+  <%= form_for @design, url: designer_designs_path(@designer) do |f| %>
+    <%= f.hidden_field :designer_id, value: current_user.id %>
+    <%= f.hidden_field :fashion_show_id, value: @designer.fashion_shows.first.id %>
+    <%= f.label :name %>:
+    <%= f.text_field :name %><br><br>
+    <%= f.label :style %>:
+    <%= f.text_field :style %><br><br>
+    <%= f.label :fashion %>:
+    <%= f.text_field :fashion %><br><br>
+    <%= f.submit %>
+  <% end %>
 <% end  %>

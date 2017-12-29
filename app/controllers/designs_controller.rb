@@ -16,19 +16,27 @@ class DesignsController < ApplicationController
   end
 
   def new
-    if params[:fashion_show_id]
+    if params.include?('fashion_show_id')
       set_fashion_show
       @design = @fashion_show.designs.build
-    elsif params[:designer_id]
-      @designer = User.find(id: params[:designer_id])
+    elsif params.include?('designer_id')
+      @designer = User.find_by(id: params[:designer_id])
       @design = @designer.designs.build
     end
   end
 
   def create
-    set_fashion_show
-    @design = @fashion_show.designs.build(design_params)
-    redirect_to fashion_show_path(@fashion_show)
+    if params[:fashion_show_id] # params.include?('fashion_show_id')
+      set_fashion_show
+      @design = @fashion_show.designs.build(design_params)
+      @design.save
+      redirect_to fashion_show_path(@fashion_show)
+    elsif params.include?('designer_id')
+      @designer = User.find_by(id: params[:designer_id])
+      @design = Design.new(design_params)
+      @design.save
+      redirect_to designer_path(@designer)
+    end
   end
 
   def show
