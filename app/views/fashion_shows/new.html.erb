@@ -1,0 +1,33 @@
+<h2>Create a New Fashion Show</h2>
+
+<%= render partial: 'layouts/error_messages', locals: {instance: @fashion_show} %>
+
+<%= form_for @fashion_show do |f| %>
+  <%= f.label :title %>:
+  <%= f.text_field :title %><br><br>
+  <%= f.label :location %>:
+  <%= f.text_field :location %><br><br>
+  <%= f.label :venue %>:
+  <%= f.text_field :venue %><br><br>
+
+  <%= content_tag(:p, "Please select designs to demonstrate:") %>
+
+  <%= f.collection_check_boxes :design_ids, @designs, :id, :name do |b| %>
+    <p><%= b.check_box %> <%= b.label %></p>
+  <% end  %>
+
+  <%= content_tag(:p, "Please create a new design to for your new show:") %>
+
+  <%= f.fields_for :design do |d| %>
+    <%= d.hidden_field :designer_id, value: current_user.id %>
+    <%= d.label :name %>:
+    <%= d.text_field :name %><br><br>
+    <%= d.label :style %>:
+    <%= d.text_field :style %><br><br>
+    <%= d.label :fashion %>
+    <%= d.text_field :fashion %><br><br>
+  <% end %>
+
+  <%= f.submit %>
+
+<% end  %>

@@ -1,0 +1,9 @@
+<h3><%= link_to design.name, design_path(design) %></h3>
+<p>Style: <%= design.style %></p>
+<p>Fashion: <%= design.fashion %></p>
+<p>Designer: <%= design.designer.name %></p> 
+<p>
+  This design is going to be demonstrated
+  at "<%= link_to design.fashion_show.title, fashion_show_path(design.fashion_show) %>"
+  in <%= design.fashion_show.location %>
+</p>

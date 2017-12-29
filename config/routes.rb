@@ -5,4 +5,16 @@ Rails.application.routes.draw do
 
   root to: "welcome#home"
 
+  resources :designs, only: [:index, :show]
+
+  resources :designers, :fashion_shows
+
+  resources :designers, only: [:show] do
+    resources :designs, only: [:index, :new, :create]
+  end
+
+  resources :fashion_shows, only: [:show] do
+    resources :designs, only: [:index, :new, :create]
+  end
+
 end

@@ -1,0 +1,13 @@
+<h2><%= link_to "#{fashion_show.title.upcase}", fashion_show_path(fashion_show) %>, <%= fashion_show.location %></h2>
+<ul>
+    <% fashion_show.designs.each do |design| %>
+      <li><%= link_to design.name, design_path(design) %>, <%= design.style %>, <%= design.fashion %></li>
+    <% end %>
+</ul>
+
+<h4>Participating Designers:</h4>
+<ul>
+  <% fashion_show.designers.each do |designer| %>
+    <li><%= designer.name %></li>
+  <% end %>
+</ul>
