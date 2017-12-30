@@ -1,1 +1,12 @@
-<%= render partial: 'fashion_show', collection: @fashion_shows %> 
+<%= render partial: 'fashion_show', collection: @fashion_shows %>
+
+<h3>Please check out fashion shows at the location of your choice:</h3>
+
+<%= form_tag 'fashion_shows', method: "GET" do %>
+<%= select_tag "location", options_for_select(@locations), include_blank: true %><br><br>
+<%= submit_tag "Select location" %>
+<% end %>
+<br><br>
+<% if params.include?('location') %>
+  <%= link_to "Back to all available fashion shows", fashion_shows_path %>
+<% end %>

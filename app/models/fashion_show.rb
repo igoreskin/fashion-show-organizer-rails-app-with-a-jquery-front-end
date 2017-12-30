@@ -16,6 +16,14 @@ class FashionShow < ApplicationRecord
     end
   end
 
+  def self.select_by_location(location)
+    where(location: location)
+  end
+
+  def self.locations
+    self.all.collect { |instance| instance.location }.uniq
+  end
+
 
 
 end

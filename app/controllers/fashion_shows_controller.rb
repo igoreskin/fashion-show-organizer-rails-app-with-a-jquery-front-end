@@ -2,7 +2,12 @@ class FashionShowsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @fashion_shows = FashionShow.all
+    @locations = FashionShow.locations
+    if params.include?('location')
+      @fashion_shows = FashionShow.select_by_location(params[:location])
+    else
+      @fashion_shows = FashionShow.all
+    end
   end
 
   def new

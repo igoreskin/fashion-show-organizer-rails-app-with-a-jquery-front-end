@@ -4,7 +4,7 @@ class Design < ApplicationRecord
   belongs_to :designer, class_name: "User"
 
   validates :name, presence: true
-  # validates :name, uniqueness: true
+  validates :name, uniqueness: true
   validates :style, presence: true
   validates :fashion, presence: true
 
