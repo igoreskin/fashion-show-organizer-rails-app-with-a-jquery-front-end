@@ -41,7 +41,7 @@ class FashionShowsController < ApplicationController
 
   def fashion_show_params
     params.require(:fashion_show).permit(
-      :title, :location, :venue, design_ids: [], design: [:name, :style, :fashion, :designer_id]
+      :title, :location, :venue, design_ids: [], design: [:name, :style, :fashion, :designer_id, :fashion_show_id]
     )
   end
 

@@ -1,6 +1,6 @@
 class Design < ApplicationRecord
 
-  belongs_to :fashion_show
+  belongs_to :fashion_show, required: false 
   belongs_to :designer, class_name: "User"
 
   validates :name, presence: true
