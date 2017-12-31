@@ -1,6 +1,6 @@
 <h2><%= link_to "#{designer.name.upcase}", designer_path(designer) %></h2>
 <ul>
     <% designer.designs.each do |design| %>
-      <li><%= link_to design.name, design_path(design) %>, <%= design.style %>, <%= design.fashion %></li>
+      <li><%= link_to design.name, designer_design_path(designer, design) %>, <%= design.style %>, <%= design.fashion %></li>
     <% end %>
 </ul>

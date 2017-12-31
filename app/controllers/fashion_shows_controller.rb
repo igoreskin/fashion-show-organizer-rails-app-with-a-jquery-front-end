@@ -26,7 +26,8 @@ class FashionShowsController < ApplicationController
     if @fashion_show.save
       redirect_to fashion_shows_path
     else
-      redirect_to new_fashion_show_path
+      @designs = Design.all
+      render 'fashion_shows/new'
     end
   end
 

@@ -10,13 +10,13 @@
   <%= f.label :venue %>:
   <%= f.text_field :venue %><br><br>
 
-  <%= content_tag(:p, "Please select designs to demonstrate:") %>
+  <%= content_tag(:strong, "Please select designs to demonstrate:") %>
 
   <%= f.collection_check_boxes :design_ids, @designs, :id, :name do |b| %>
     <p><%= b.check_box %> <%= b.label %></p>
   <% end  %>
 
-  <%= content_tag(:p, "Please create a new design to for your new show:") %>
+  <%= content_tag(:strong, "Please create a new design to for your new show:") %><br><br>
 
   <%= f.fields_for :design do |d| %>
     <%= d.hidden_field :designer_id, value: current_user.id %>

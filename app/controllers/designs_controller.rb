@@ -3,7 +3,7 @@ class DesignsController < ApplicationController
 
   def index
     if params[:designer_id]
-      @designer = Designer.find_by(id: params[:designer_id])
+      set_designer
       @designs = @designer.designs
       flash[:notice] = "Name of the Designer: #{@designer.name.upcase}"
     elsif params[:fashion_show_id]
@@ -20,28 +20,28 @@ class DesignsController < ApplicationController
       set_fashion_show
       @design = @fashion_show.designs.build
     elsif params.include?('designer_id')
-      @designer = User.find_by(id: params[:designer_id])
+      set_designer
       @design = @designer.designs.build
     end
   end
 
   def create
-    if params[:fashion_show_id] # params.include?('fashion_show_id')
+    if params[:fashion_show_id] 
       set_fashion_show
       @design = @fashion_show.designs.build(design_params)
       if @design.save
         redirect_to fashion_show_path(@fashion_show)
       else
-        redirect_to new_fashion_show_design_path(@fashion_show)
+        render 'designs/new'
       end
     elsif params.include?('designer_id')
-      @designer = User.find_by(id: params[:designer_id])
+      set_designer
       @design = Design.new(design_params)
       if @design.save
         redirect_to designer_path(@designer)
       else
-        redirect_to new_designer_design_path(@designer)
-      end 
+        render 'designs/new'
+      end
     end
   end
 
@@ -57,6 +57,10 @@ class DesignsController < ApplicationController
 
   def set_fashion_show
     @fashion_show = FashionShow.find_by(id: params[:fashion_show_id])
+  end
+
+  def set_designer
+    @designer = User.find_by(id: params[:designer_id])
   end
 
 
