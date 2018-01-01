@@ -10,11 +10,11 @@
 <% if @fashion_show %>
   <%= form_for @design, url: fashion_show_designs_path(@fashion_show) do |f| %>
     <%= f.hidden_field :designer_id, value: current_user.id %>
-    <%= f.label :name %>:
+    <%= f.label :name %>
     <%= f.text_field :name %><br><br>
-    <%= f.label :style %>:
+    <%= f.label :style %>
     <%= f.text_field :style %><br><br>
-    <%= f.label :fashion %>:
+    <%= f.label :fashion %>
     <%= f.text_field :fashion %><br><br>
     <%= f.submit %>
   <% end %>
@@ -23,11 +23,11 @@
 <% if @designer %>
   <%= form_for @design, url: designer_designs_path(@designer) do |f| %>
     <%= f.hidden_field :designer_id, value: current_user.id %>
-    <%= f.label :name %>:
+    <%= f.label :name %>
     <%= f.text_field :name %><br><br>
-    <%= f.label :style %>:
+    <%= f.label :style %>
     <%= f.text_field :style %><br><br>
-    <%= f.label :fashion %>:
+    <%= f.label :fashion %>
     <%= f.text_field :fashion %><br><br>
     <%= content_tag(:p, "Please select a fashion show where you want to demonstrate your new design:") %>
     <%= collection_select(:design, :fashion_show_id, FashionShow.all, :id, :title) %><br><br><br>
