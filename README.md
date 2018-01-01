@@ -1,8 +1,4 @@
-# README
-
-Fashion Show Organizer
-
-Rails portfolio project
+# Fashion Show Organizer Rails Portfolio Project
 
 This is a complete Ruby on Rails application that manages data about fashion designers, designs and fashion shows through complex forms and RESTful routes.  The users of the organizer are all-time greatest fashion designers who can log in, create new designs of various styles and fashions, and create fashion shows at different locations around the world. A new fashion designer can sign up, create designs and set up fashion shows using the existing designs as well as create their own. The entire signup, login, logout and authentication process is handled by Devise. Logging in is also available via an existing Facebook account. The relations between the models include belongs_to, has_many and has_many_through, designs being the join table between designers and fashion shows. The Designer model is used throughout the application, but its class_name is actually User in the spirit of Devise. Both designer’s and fashion show’s show pages include a link to create a new design, and this functionality is handled by nested routes. Nested attributes and a custom setter are represented by the functionality of creating a new design within the form for a new fashion show. Fashion shows can also be selected by location with the help of class methods, and the user can check out fashion shows at the location of their choice.
 
