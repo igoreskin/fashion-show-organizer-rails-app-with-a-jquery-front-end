@@ -8,7 +8,7 @@ Specs:
 - [x] The "through" part of the has_many through includes at least one user submittable attribute (design.name, design.style, design.fashion)
 - [x] Include reasonable validations for simple model objects (Designer class_name User, Design, FashionShow)
 - [x] Include a class level ActiveRecord scope method (FashionShow.select_by_location, e.g. /fashion_shows?utf8=✓&location=Stockholm&commit=Select+location)
-- [x] Include a nested form writing to an associated model using a custom attribute writer (/fashion_show/new, Design)
+- [x] Include a nested form writing to an associated model using a custom attribute writer (/fashion_shows/new, Design)
 - [x] Include signup (Devise)
 - [x] Include login (Devise)
 - [x] Include logout (Devise)
