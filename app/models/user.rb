@@ -6,7 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :designs, foreign_key: "designer_id"
-  has_many :fashion_shows, through: :designs 
+  has_many :fashion_shows, through: :designs
+  has_many :comments, foreign_key: "designer_id"
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
