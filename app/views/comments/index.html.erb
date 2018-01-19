@@ -1,3 +1,5 @@
+<h3><%= @design.name.upcase %></h3> 
+
 <%= render partial: "comment", collection: @comments %>
 
 <p><%= link_to "Back to the design page", design_path(@design) %></p>

@@ -1,1 +1,6 @@
-<p><%= comment.content %></p> 
+<p><%= comment.content %></p>
+
+<% if comment.designer == current_user %>
+  <%= link_to "Click here to update your comment", edit_design_comment_path(@design, comment) %><br><br>
+  <%= button_to "Delete your comment", design_comment_path(@design, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>
