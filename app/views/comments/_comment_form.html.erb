@@ -1,0 +1,5 @@
+<%= form_for @comment, url: design_comments_path(@design) do |f| %>
+<%= f.hidden_field :designer_id, value: current_user.id %>
+<%= f.text_area :content %><br><br>
+<%= f.submit %>
+<% end %>

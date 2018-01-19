@@ -1,0 +1,9 @@
+<%= render partial: 'layouts/error_messages', locals: { instance: @comment } %>
+
+<h3>Please edit your comment:</h3>
+
+<%= form_for @comment, url: design_comment_path(@design), method: 'patch' do |f| %>
+<%= f.hidden_field :designer_id, value: current_user.id %>
+<%= f.text_area :content %><br><br>
+<%= f.submit %>
+<% end %>

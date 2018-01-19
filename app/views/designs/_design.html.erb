@@ -8,4 +8,8 @@
   in <%= design.fashion_show.location %>
 </p>
 
-<p><%= link_to "Designer's profile", designer_path(design.designer) %></p> 
+<p><%= link_to "Designer's profile", designer_path(design.designer) %></p>
+
+<p><%= link_to "Please enter your comment", new_design_comment_path(design) %></p>
+
+<p><%= link_to "Read all comments to this design", design_comments_path(design) %></p> 

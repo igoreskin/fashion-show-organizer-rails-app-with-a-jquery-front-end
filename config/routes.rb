@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resources :designs, only: [:index, :new, :show, :create]
   end
 
-  resources :comments
+  resources :designs, only: [:show] do
+    resources :comments
+  end
 
 end
