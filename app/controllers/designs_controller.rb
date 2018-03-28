@@ -13,6 +13,10 @@ class DesignsController < ApplicationController
     else
       @designs = Design.all
     end
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @designs }
+    end
   end
 
   def new
@@ -26,7 +30,7 @@ class DesignsController < ApplicationController
   end
 
   def create
-    if params[:fashion_show_id] 
+    if params[:fashion_show_id]
       set_fashion_show
       @design = @fashion_show.designs.build(design_params)
       if @design.save
@@ -47,6 +51,10 @@ class DesignsController < ApplicationController
 
   def show
     @design = Design.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @design }
+    end
   end
 
   private

@@ -1,1 +1,17 @@
-<%= render partial: 'designer', collection: @designers %> 
+<%= render partial: 'designer', collection: @designers %>
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $(".js-show-fashion-shows").on("click", function() {
+    // $(".js-fashion-shows-info").html("fashionShow")
+    var id = $(this).data("id");
+    $.get(`/designers/${id}/fashion_shows.json`, function(details) {
+      var fashionShow = details.forEach(function(detail) {
+        console.log(detail)
+      })
+      // console.log(fashionShow)
+      $(".js-fashion-shows-info").html(fashionShow)
+    });
+  });
+});
+</script>

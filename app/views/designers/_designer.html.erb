@@ -4,3 +4,6 @@
       <li><%= link_to design.name, designer_design_path(designer, design) %>, <%= design.style %>, <%= design.fashion %></li>
     <% end %>
 </ul>
+
+<button class="js-show-fashion-shows" data-id="<%= designer.id %>">Fashion Shows</button>
+<div class="js-fashion-shows-info"></div>

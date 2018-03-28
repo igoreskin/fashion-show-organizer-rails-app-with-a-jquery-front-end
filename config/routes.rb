@@ -9,12 +9,14 @@ Rails.application.routes.draw do
 
   resources :designers, :fashion_shows
 
-  resources :designers, only: [:show] do
+  resources :designers, only: [:index, :show] do
     resources :designs, only: [:index, :new, :show, :create]
+    resources :fashion_shows, only: [:index, :new, :show, :create]
   end
 
   resources :fashion_shows, only: [:show] do
     resources :designs, only: [:index, :new, :show, :create]
+    resources :designers, only: [:index, :show]
   end
 
   resources :designs, only: [:show] do

@@ -8,6 +8,10 @@ class FashionShowsController < ApplicationController
     else
       @fashion_shows = FashionShow.all
     end
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @fashion_shows }
+    end
   end
 
   def new
@@ -19,6 +23,10 @@ class FashionShowsController < ApplicationController
 
   def show
     @fashion_show = FashionShow.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @fashion_show }
+    end
   end
 
   def create
