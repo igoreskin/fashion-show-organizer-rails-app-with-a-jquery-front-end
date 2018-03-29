@@ -1,9 +1,28 @@
-<h2><%= link_to "#{designer.name.upcase}", designer_path(designer) %></h2>
-<ul>
+<h3><%= link_to "#{designer.name.upcase}", designer_path(designer) %></h3>
+<!-- <ul>
     <% designer.designs.each do |design| %>
       <li><%= link_to design.name, designer_design_path(designer, design) %>, <%= design.style %>, <%= design.fashion %></li>
     <% end %>
-</ul>
+</ul> -->
 
-<button class="js-show-fashion-shows" data-id="<%= designer.id %>">Fashion Shows</button>
-<div class="js-fashion-shows-info"></div>
+<button class="js-show-designs" data-id="<%= designer.id %>">Show Designs</button>
+<div id="designer-<%=designer.id%>" class="js-designs-info"></div>
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $(".js-show-designs").on("click", function() {
+    var id = $(this).data("id");
+    $.get(`/designers/${id}/designs.json`, function(response) {
+      let designs = ""
+      response.forEach(function(design) {
+      designs += `<li>${design.name}, ${design.style}, ${design.fashion}</li>`
+      });
+      var description = `<ul>${designs}</ul>`
+      $("#designer-" + id).html(description)
+    });
+  });
+});
+</script>
