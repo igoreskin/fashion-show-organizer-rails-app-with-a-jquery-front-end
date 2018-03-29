@@ -4,6 +4,10 @@ class CommentsController < ApplicationController
   def index
     set_design
     @comments = @design.comments
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @comments}
+    end 
   end
 
   def new

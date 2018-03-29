@@ -1,7 +1,7 @@
-<h3><%= link_to design.name, design_path(design) %></h3>
-<p>Style: <%= design.style %></p>
-<p>Fashion: <%= design.fashion %></p>
-<p>Designer: <%= design.designer.name %></p>
+<h3 class="designName"><%= link_to design.name, design_path(design) %></h3>
+<p class="designStyle">Style: <%= design.style %></p>
+<p class="designFashion">Fashion: <%= design.fashion %></p>
+<p class="designDesigner">Designer: <%= design.designer.name %></p>
 <p>
   This design is going to be demonstrated
   at "<%= link_to design.fashion_show.title, fashion_show_path(design.fashion_show) %>"
@@ -12,4 +12,4 @@
 
 <p><%= link_to "Please enter your comment", new_design_comment_path(design) %></p>
 
-<p><%= link_to "Read all comments to this design", design_comments_path(design) %></p> 
+<p><%= link_to "Read all comments to this design", design_comments_path(design) %></p>

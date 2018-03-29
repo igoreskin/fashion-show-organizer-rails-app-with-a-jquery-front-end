@@ -1,1 +1,27 @@
-<%= render partial: 'design', locals: { design: @design} %>
+<%= render partial: 'design', locals: { design: @design } %>
+
+<!-- <h3 class="designName"><%= @design.name %></h3>
+<p class="designStyle">Style: <%= @design.style %></p>
+<p class="designFashion">Fashion: <%= @design.fashion %></p>
+<p class="designDesigner">Designer: <%= @design.designer.name %></p> -->
+
+<button class="js-next" data-id="<%= @design.id%>">Show Next Design</button>
+
+
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $(".js-next").on("click", function() {
+    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    $.get(`/designs/${nextId}.json`, function(data) {
+      console.log(data.name)
+      $(".designName").text(data.name);
+      $(".designStyle").text(`Style: ${data.style}`);
+      $(".designFashion").text(`Fashion: ${data.fashion}`);
+      $(".designDesigner").text(`Designer: ${data.designer.name}`);
+      $(".js-next").attr("data-id", data.id);
+      window.history.pushState({}, null, "/designs/" + nextId);
+    })
+  })
+})
+</script>
