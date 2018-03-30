@@ -8,9 +8,12 @@ $(function() {
       $(".designDesigner").text(`Designer: ${data.designer.name}`);
       $(".js-next").attr("data-id", data.id);
       window.history.pushState({}, null, "/designs/" + nextId);
-    })
-  })
-})
+    });
+    $(".display-comments").empty();
+    $("#hidden").hide();
+    $(".js-display-comments").show();
+  });
+});
 
 
 $(function() {
