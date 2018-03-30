@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :designers, only: [:index, :show]
   end
 
-  resources :designs, only: [:show] do
+  resources :designs, only: [:index, :show] do
     resources :comments
   end
 

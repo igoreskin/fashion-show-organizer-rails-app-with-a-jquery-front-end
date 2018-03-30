@@ -1,3 +1,9 @@
+<style>
+#hidden {
+  display: none
+}
+</style>
+
 <%= render partial: 'design', locals: { design: @design } %>
 
 <!-- <h3 class="designName"><%= @design.name %></h3>
@@ -5,6 +11,9 @@
 <p class="designFashion">Fashion: <%= @design.fashion %></p>
 <p class="designDesigner">Designer: <%= @design.designer.name %></p> -->
 
+<p class="display-comments"></p>
+<button class="js-display-comments" data-id="<%= @design.id%>" data-designer="<%= @design.designer.id %>">Enter and Display Comments</button>
+<button class="js-hide" id="hidden">Hide Comments</button><br><br>
 <button class="js-next" data-id="<%= @design.id%>">Show Next Design</button>
 
 
@@ -14,7 +23,6 @@ $(function() {
   $(".js-next").on("click", function() {
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     $.get(`/designs/${nextId}.json`, function(data) {
-      console.log(data.name)
       $(".designName").text(data.name);
       $(".designStyle").text(`Style: ${data.style}`);
       $(".designFashion").text(`Fashion: ${data.fashion}`);
@@ -24,4 +32,35 @@ $(function() {
     })
   })
 })
+</script>
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $(".js-display-comments").on("click", function() {
+    $(this).hide();
+    $("#hidden").show();
+    var id = $(this).data("id");
+    var designerId = $(this).data("designer");
+    $.get(`/designs/${id}/comments.json`, function(data) {
+      let comments = "";
+      data.forEach(function(comment) {
+        comments += `<li>${comment.content}</li>`
+      });
+      comments += `<br><a href="/designs/${id}/comments/new">Enter your comment</a><br>`
+      comments += `<a href="/designers/${designerId}">View designer's profile</a>`
+      var commentsDisplay = `<ul>${comments}</ul>`;
+      $(".display-comments").html(commentsDisplay)
+    });
+  });
+});
+</script>
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $(".js-hide").on("click", function() {
+    $(this).hide();
+    $(".js-display-comments").show();
+    $(".display-comments").empty();
+  });
+});
 </script>

@@ -5,6 +5,10 @@ class FashionShowsController < ApplicationController
     @locations = FashionShow.locations
     if params.include?('location')
       @fashion_shows = FashionShow.select_by_location(params[:location])
+    elsif params.include?('designer_id')
+      # binding.pry
+      designer = User.find(params[:designer_id])
+      @fashion_shows = designer.fashion_shows
     else
       @fashion_shows = FashionShow.all
     end

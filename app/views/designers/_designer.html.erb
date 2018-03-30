@@ -18,7 +18,7 @@ $(function() {
     $.get(`/designers/${id}/designs.json`, function(response) {
       let designs = ""
       response.forEach(function(design) {
-      designs += `<li>${design.name}, ${design.style}, ${design.fashion}</li>`
+      designs += `<li><a href="/designers/${id}/designs/${design.id}">${design.name}</a>, ${design.style}, ${design.fashion}</li>`
       });
       var description = `<ul>${designs}</ul>`
       $("#designer-" + id).html(description)

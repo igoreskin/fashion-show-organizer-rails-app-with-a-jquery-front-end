@@ -1,5 +1,5 @@
 <%= render partial: 'designer', locals: { designer: @designer} %>
 
 <% if @designer == current_user %>
-  <%= link_to "Create a New Design", new_designer_design_path(@designer) %>
+  <br><%= link_to "Create a New Design", new_designer_design_path(@designer) %>
 <% end %>
