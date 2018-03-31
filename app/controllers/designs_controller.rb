@@ -34,7 +34,10 @@ class DesignsController < ApplicationController
       set_fashion_show
       @design = @fashion_show.designs.build(design_params)
       if @design.save
-        redirect_to fashion_show_path(@fashion_show)
+        respond_to do |format|
+          format.html { redirect_to fashion_show_path(@fashion_show) }
+          format.json { render json: @design, status: 201 }
+        end
       else
         render 'designs/new'
       end
@@ -42,7 +45,10 @@ class DesignsController < ApplicationController
       set_designer
       @design = Design.new(design_params)
       if @design.save
-        redirect_to designer_path(@designer)
+        respond_to do |format|
+          format.html { redirect_to designer_path(@designer) }
+          format.json { render json: @design, status: 201 }
+        end
       else
         render 'designs/new'
       end

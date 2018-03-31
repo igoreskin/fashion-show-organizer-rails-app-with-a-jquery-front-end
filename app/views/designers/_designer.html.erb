@@ -1,3 +1,9 @@
+<style>
+.js-hide {
+  display: none
+}
+</style>
+
 <h3><%= link_to "#{designer.name.upcase}", designer_path(designer) %></h3>
 <!-- <ul>
     <% designer.designs.each do |design| %>
@@ -6,15 +12,15 @@
 </ul> -->
 
 <button class="js-show-designs" data-id="<%= designer.id %>">Show Designs</button>
+<button class="js-hide" id="hidden-<%= designer.id %>" data-designer="<%= designer.id %>">Hide Designs</button><br><br>
 <div id="designer-<%=designer.id%>" class="js-designs-info"></div>
-
-
-
 
 <script type="text/javascript" charset="utf-8">
 $(function() {
   $(".js-show-designs").on("click", function() {
     var id = $(this).data("id");
+    $(this).hide();
+    $(`#hidden-${id}`).show();
     $.get(`/designers/${id}/designs.json`, function(response) {
       let designs = ""
       response.forEach(function(design) {
@@ -23,6 +29,17 @@ $(function() {
       var description = `<ul>${designs}</ul>`
       $("#designer-" + id).html(description)
     });
+  });
+});
+</script>
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $(".js-hide").on("click", function() {
+    var id = $(this).data("designer");
+    $(this).hide();
+    $(".js-show-designs").show();
+    $("#designer-" + id).empty();
   });
 });
 </script>

@@ -34,3 +34,23 @@
     <%= f.submit %>
   <% end %>
 <% end  %>
+
+<div>
+  <h3 id="designName"></h3>
+  <p id="designStyle"></p>
+  <p id="designFashion"></p>
+  <p id="designDesigner"></p>
+</div>
+
+<script>
+$(function() {
+  $('form').submit(function(event) {
+    $("#designName").text("text")
+    event.preventDefault();
+    var values = $(this).serialize();
+    $.post('/designs', values).done(function(data) {
+      $("#designName").text(data.name);
+    })
+  })
+})
+</script>

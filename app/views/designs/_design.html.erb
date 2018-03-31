@@ -1,7 +1,7 @@
 <h3 class="designName"><%= link_to design.name, design_path(design) %></h3>
 <p class="designStyle">Style: <%= design.style %></p>
 <p class="designFashion">Fashion: <%= design.fashion %></p>
-<p class="designDesigner">Designer: <%= link_to design.designer.name, designer_path(design) %></p>
+<p class="designDesigner">Designer: <%= link_to design.designer.name, designer_path(design.designer) %></p>
 
 
 <!-- <p>
