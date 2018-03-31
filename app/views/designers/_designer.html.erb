@@ -11,7 +11,7 @@
     <% end %>
 </ul> -->
 
-<button class="js-show-designs" data-id="<%= designer.id %>">Show Designs</button>
+<button class="js-show-designs" id="show-<%= designer.id %>" data-id="<%= designer.id %>">Show Designs</button>
 <button class="js-hide" id="hidden-<%= designer.id %>" data-designer="<%= designer.id %>">Hide Designs</button><br><br>
 <div id="designer-<%=designer.id%>" class="js-designs-info"></div>
 
@@ -37,8 +37,8 @@ $(function() {
 $(function() {
   $(".js-hide").on("click", function() {
     var id = $(this).data("designer");
-    $(this).hide();
-    $(".js-show-designs").show();
+    $(`#hidden-${id}`).hide();
+    $(`#show-${id}`).show();
     $("#designer-" + id).empty();
   });
 });

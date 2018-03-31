@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   root to: "welcome#home"
 
-  resources :designs, only: [:index, :show]
+  resources :designs, only: [:index, :show, :create]
 
   resources :designers, :fashion_shows
 

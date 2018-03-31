@@ -39,17 +39,19 @@
   <h3 id="designName"></h3>
   <p id="designStyle"></p>
   <p id="designFashion"></p>
-  <p id="designDesigner"></p>
 </div>
 
-<script>
+<script type="text/javascript" charset="utf-8">
 $(function() {
   $('form').submit(function(event) {
-    $("#designName").text("text")
     event.preventDefault();
     var values = $(this).serialize();
+    console.log(values)
     $.post('/designs', values).done(function(data) {
+      console.log(data)
       $("#designName").text(data.name);
+      $("#designStyle").text(`Style: ${data.style}`);
+      $("#designFashion").text(`Fashion: ${data.fashion}`);
     })
   })
 })
