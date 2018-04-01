@@ -30,6 +30,7 @@ class DesignsController < ApplicationController
   end
 
   def create
+    # binding.pry
     if params[:fashion_show_id]
       set_fashion_show
       @design = @fashion_show.designs.build(design_params)
@@ -41,10 +42,13 @@ class DesignsController < ApplicationController
       else
         render 'designs/new'
       end
-    elsif params.include?('designer_id')
+      else
+    # elsif params.include?('designer_id')
       set_designer
       @design = Design.new(design_params)
+        # binding.pry
       if @design.save
+        # render json: @design
         respond_to do |format|
           format.html { redirect_to designer_path(@designer) }
           format.json { render json: @design, status: 201 }
