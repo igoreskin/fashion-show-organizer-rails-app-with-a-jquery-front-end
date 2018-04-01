@@ -1,6 +1,6 @@
 $(function() {
   $(".js-next").on("click", function() {
-    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    const nextId = parseInt($(".js-next").attr("data-id")) + 1;
     $.get(`/designs/${nextId}.json`, function(data) {
       $(".designName").text(data.name);
       $(".designStyle").text(`Style: ${data.style}`);
@@ -20,7 +20,9 @@ $(function() {
   $(".js-display-comments").on("click", function() {
     $(this).hide();
     $("#hidden").show();
-    var id = $(this).data("id");
+    var url = window.location.pathname;
+    var id = url.substring(url.lastIndexOf('/') + 1); 
+    // var id = $(this).data("id");
     var designerId = $(this).data("designer");
     $.get(`/designs/${id}/comments.json`, function(data) {
       let comments = "";

@@ -54,6 +54,7 @@ $(function() {
       data: values,
       dataType: "JSON"
     }).done(function(data){
+      console.log(data)
       let design = new Design(data.name, data.style, data.fashion);
       design.appendDesign();
       $(".submit").prop('disabled', false);

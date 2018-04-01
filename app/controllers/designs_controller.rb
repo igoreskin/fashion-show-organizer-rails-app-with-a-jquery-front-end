@@ -51,7 +51,8 @@ class DesignsController < ApplicationController
           format.json { render json: @design, status: 201 }
         end
       else
-        render 'designs/new'
+        render json: @design.errors 
+        # render 'designs/new'
       end
     end
   end
