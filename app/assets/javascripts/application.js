@@ -12,4 +12,5 @@
 //
 //= require rails-ujs
 //= require jquery
+//= require new_design_form
 //= require_tree .
