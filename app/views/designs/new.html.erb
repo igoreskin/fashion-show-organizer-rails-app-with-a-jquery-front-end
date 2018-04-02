@@ -47,7 +47,7 @@
 $(function() {
   $('form').submit(function(event) {
     event.preventDefault();
-    var values = $(this).serialize();
+    let values = $(this).serialize();
     $.ajax({
       method: "POST",
       url: '/designs',
@@ -61,6 +61,7 @@ $(function() {
       $("form").trigger("reset");
     }).fail(function(xhr, status, error) {
       console.log(error);
+      $(".submit").prop('disabled', false);
     })
   })
 })
@@ -72,7 +73,7 @@ function Design(name, style, fashion) {
 }
 
 Design.prototype.appendDesign = function() {
-  $("#designName").text(this.name);
+  $("#designName").text(`Name: ${this.name}`);
   $("#designStyle").text(`Style: ${this.style}`);
   $("#designFashion").text(`Fashion: ${this.fashion}`);
 }

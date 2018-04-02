@@ -39,7 +39,8 @@ class DesignsController < ApplicationController
           format.json { render json: @design, status: 201 }
         end
       else
-        render 'designs/new'
+        render json: @design.errors
+        # render 'designs/new'
       end
       else
     # elsif params.include?('designer_id')
@@ -51,7 +52,7 @@ class DesignsController < ApplicationController
           format.json { render json: @design, status: 201 }
         end
       else
-        render json: @design.errors 
+        render json: @design.errors
         # render 'designs/new'
       end
     end

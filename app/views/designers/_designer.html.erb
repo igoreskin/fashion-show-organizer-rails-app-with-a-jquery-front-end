@@ -18,7 +18,7 @@
 <script type="text/javascript" charset="utf-8">
 $(function() {
   $(".js-show-designs").on("click", function() {
-    var id = $(this).data("id");
+    const id = $(this).data("id");
     $(this).hide();
     $(`#hidden-${id}`).show();
     $.get(`/designers/${id}/designs.json`, function(response) {
@@ -26,7 +26,7 @@ $(function() {
       response.forEach(function(design) {
       designs += `<li><a href="/designers/${id}/designs/${design.id}">${design.name}</a>, ${design.style}, ${design.fashion}</li>`
       });
-      var description = `<ul>${designs}</ul>`
+      const description = `<ul>${designs}</ul>`
       $("#designer-" + id).html(description)
     });
   });
@@ -36,7 +36,7 @@ $(function() {
 <script type="text/javascript" charset="utf-8">
 $(function() {
   $(".js-hide").on("click", function() {
-    var id = $(this).data("designer");
+    const id = $(this).data("designer");
     $(`#hidden-${id}`).hide();
     $(`#show-${id}`).show();
     $("#designer-" + id).empty();

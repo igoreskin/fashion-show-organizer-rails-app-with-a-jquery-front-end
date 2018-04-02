@@ -20,10 +20,10 @@ $(function() {
   $(".js-display-comments").on("click", function() {
     $(this).hide();
     $("#hidden").show();
-    var url = window.location.pathname;
-    var id = url.substring(url.lastIndexOf('/') + 1); 
+    const url = window.location.pathname;
+    const id = url.substring(url.lastIndexOf('/') + 1);
     // var id = $(this).data("id");
-    var designerId = $(this).data("designer");
+    const designerId = $(this).data("designer");
     $.get(`/designs/${id}/comments.json`, function(data) {
       let comments = "";
       data.forEach(function(comment) {
@@ -31,7 +31,7 @@ $(function() {
       });
       comments += `<br><a href="/designs/${id}/comments/new">Enter your comment</a><br>`
       comments += `<a href="/designers/${designerId}">View designer's profile</a>`
-      var commentsDisplay = `<ul>${comments}</ul>`;
+      const commentsDisplay = `<ul>${comments}</ul>`;
       $(".display-comments").html(commentsDisplay)
     });
   });
