@@ -2,7 +2,7 @@ $(function() {
   $(".js-next").on("click", function() {
     const nextId = parseInt($(".js-next").attr("data-id")) + 1;
     $.get(`/designs/${nextId}.json`, function(data) {
-      $(".designName").html(`<a href="/designs/${nextId}">${data.name}</a>`)
+      $(".designName").html(`<a href="/designs/${nextId}">${data.name}</a>`) // this makes the name of the next design a link 
       $(".designStyle").text(`Style: ${data.style}`);
       $(".designFashion").text(`Fashion: ${data.fashion}`);
       $(".designDesigner").text(`Designer: ${data.designer.name}`);
@@ -21,7 +21,7 @@ $(function() {
     $(this).hide();
     $("#hidden").show();
     const url = window.location.pathname; // this is the url updated when clicked Next
-    const id = url.substring(url.lastIndexOf('/') + 1); // the last element of the updated url 
+    const id = url.substring(url.lastIndexOf('/') + 1); // the last element of the updated url
     const designerId = $(this).data("designer");
     $.get(`/designs/${id}/comments.json`, function(data) {
       let comments = "";
