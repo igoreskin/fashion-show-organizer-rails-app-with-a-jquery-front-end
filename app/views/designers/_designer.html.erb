@@ -22,8 +22,11 @@ $(function() {
     $(this).hide();
     $(`#hidden-${id}`).show();
     $.get(`/designers/${id}/designs.json`, function(response) {
+      sortedResponse = response.sort(function(a, b) {
+        return a.name.localeCompare(b.name);
+      })
       let designs = ""
-      response.forEach(function(design) {
+      sortedResponse.forEach(function(design) {
       designs += `<li><a href="/designers/${id}/designs/${design.id}">${design.name}</a>, ${design.style}, ${design.fashion}</li>`
       });
       const description = `<ul>${designs}</ul>`
